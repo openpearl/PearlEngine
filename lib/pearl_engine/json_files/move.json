@@ -1,0 +1,97 @@
+{
+  "root":{
+    "cardId":"root",
+    "parentCardId":"",
+    "childrenCardIds":[
+      "tdqbrwo",
+      "zqzeoql",
+      "aopqhtz",
+      "bdycuqt"
+    ],
+    "speaker":"",
+    "message":""
+  },
+  "tdqbrwo":{
+    "cardId":"tdqbrwo",
+    "parentCardId":"",
+    "childrenCardIds":[
+      "evfcrgb"
+    ],
+    "speaker":"ai",
+    "message":"You're at ___mins of activity for today (below personal average/30mins)"
+  },
+  "zqzeoql":{
+    "cardId":"zqzeoql",
+    "parentCardId":"",
+    "childrenCardIds":[
+      "evfcrgb"
+    ],
+    "speaker":"ai",
+    "message":"You've still got ___mins to go to get to your 30 mins of activity for the day!"
+  },
+  "aopqhtz":{
+    "cardId":"aopqhtz",
+    "parentCardId":"",
+    "childrenCardIds":[
+      "evfcrgb"
+    ],
+    "speaker":"ai",
+    "message":"You haven't been as active as you normally are by now."
+  },
+  "bdycuqt":{
+    "cardId":"bdycuqt",
+    "parentCardId":"",
+    "childrenCardIds":[
+      "evfcrgb"
+    ],
+    "speaker":"ai",
+    "message":"You missed that walk you normally do around this time"
+  },
+  "evfcrgb":{
+    "cardId":"evfcrgb",
+    "parentCardId":"tdqbrwo",
+    "childrenCardIds":[
+      "ogacxbs",
+      "dfmyiok",
+      "zuofqtm"
+    ],
+    "speaker":"client",
+    "message":" Cool"
+  },
+  "ogacxbs":{
+    "cardId":"ogacxbs",
+    "parentCardId":"evfcrgb",
+    "childrenCardIds":[
+      "efhwjxg"
+    ],
+    "speaker":"ai",
+    "message":"That's a little low for you. What's up?"
+  },
+  "dfmyiok":{
+    "cardId":"dfmyiok",
+    "parentCardId":"evfcrgb",
+    "childrenCardIds":[
+      "efhwjxg"
+    ],
+    "speaker":"ai",
+    "message":" That's not too much compared to your average. How are you?"
+  },
+  "zuofqtm":{
+    "cardId":"zuofqtm",
+    "parentCardId":"evfcrgb",
+    "childrenCardIds":[
+      "efhwjxg"
+    ],
+    "speaker":"ai",
+    "message":"There's definitely room to improve there. Everything alright?"
+  },
+  "efhwjxg":{
+    "cardId":"efhwjxg",
+    "parentCardId":"ogacxbs",
+    "childrenCardIds":[
+      null
+    ],
+    "speaker":"client",
+    "message":"Busy"
+  }
+}
