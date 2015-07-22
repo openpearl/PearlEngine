@@ -1,0 +1,708 @@
+{
+  "root": {
+    "cardID": "root",
+    "childrenCardIDs": [
+      "uuid_33107b1468a4f054",
+      "uuid_36c7383e2db677ad",
+      "uuid_ae8b1ae142b3a24f"
+    ],
+    "xpos": "-91.7777777777778",
+    "ypos": "-135",
+    "speaker": "",
+    "visible": "true",
+    "highlight": "false",
+    "key": "uuid_ff70883c380e0f7f",
+    "ref": "root"
+  },
+  "uuid_6c826db05f7a8099": {
+    "cardID": "uuid_6c826db05f7a8099",
+    "parentCardIDs": [
+      "uuid_33107b1468a4f054"
+    ],
+    "speaker": "client",
+    "messages": "Cool",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "765",
+    "ypos": "150",
+    "childrenCardIDs": [
+      "uuid_da1b59d2403d60ec"
+    ],
+    "key": "uuid_71fe7367df9e69a3",
+    "ref": "uuid_6c826db05f7a8099"
+  },
+  "uuid_a11ff7de61b74ad3": {
+    "cardID": "uuid_a11ff7de61b74ad3",
+    "childrenCardIDs": [
+      "uuid_a53dd7b55b3b90b2"
+    ],
+    "parentCardIDs": [
+      "uuid_da1b59d2403d60ec"
+    ],
+    "speaker": "client",
+    "messages": "Busy",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1618",
+    "ypos": "122",
+    "key": "uuid_338f5e82360b54ba",
+    "ref": "uuid_a11ff7de61b74ad3"
+  },
+  "uuid_10db45615a5107e4": {
+    "cardID": "uuid_10db45615a5107e4",
+    "childrenCardIDs": [
+      "uuid_596cfc2301a38b68"
+    ],
+    "parentCardIDs": [
+      "uuid_da1b59d2403d60ec"
+    ],
+    "speaker": "client",
+    "messages": "Unmotivated",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1619",
+    "ypos": "277",
+    "key": "uuid_52cae61b5860788e",
+    "ref": "uuid_10db45615a5107e4"
+  },
+  "uuid_d4690f931d9ad875": {
+    "cardID": "uuid_d4690f931d9ad875",
+    "parentCardIDs": [
+      "uuid_da1b59d2403d60ec"
+    ],
+    "speaker": "client",
+    "messages": "Not feeling well",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1627",
+    "ypos": "431",
+    "childrenCardIDs": [
+      "uuid_573a73dbc2195c9d"
+    ],
+    "key": "uuid_b954bb42b5582f54",
+    "ref": "uuid_d4690f931d9ad875"
+  },
+  "uuid_2afe318de46a2f2d": {
+    "cardID": "uuid_2afe318de46a2f2d",
+    "parentCardIDs": [
+      "uuid_da1b59d2403d60ec"
+    ],
+    "speaker": "client",
+    "messages": "Other",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1630",
+    "ypos": "599",
+    "key": "uuid_7ffcf34dbc4bad29",
+    "ref": "uuid_2afe318de46a2f2d"
+  },
+  "uuid_a53dd7b55b3b90b2": {
+    "cardID": "uuid_a53dd7b55b3b90b2",
+    "parentCardIDs": [
+      "uuid_a11ff7de61b74ad3"
+    ],
+    "speaker": "ai",
+    "messages": " That's OK! It happens sometimes. Maybe it'll be time for a quick walk after you're done for the day?",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "2368",
+    "ypos": "45",
+    "childrenCardIDs": [
+      "uuid_db085a265c96e541"
+    ],
+    "key": "uuid_d16b6d9d41134652",
+    "ref": "uuid_a53dd7b55b3b90b2"
+  },
+  "uuid_596cfc2301a38b68": {
+    "cardID": "uuid_596cfc2301a38b68",
+    "parentCardIDs": [
+      "uuid_10db45615a5107e4"
+    ],
+    "speaker": "ai",
+    "messages": "I hear that. Let's just start with something small, then. Get off a stop early on your commute home?",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "2371",
+    "ypos": "215",
+    "childrenCardIDs": [
+      "uuid_02b31f3b8e18a6e7",
+      "uuid_88b41aaf76ce67db"
+    ],
+    "key": "uuid_b5237a6293f19939",
+    "ref": "uuid_596cfc2301a38b68"
+  },
+  "uuid_db085a265c96e541": {
+    "cardID": "uuid_db085a265c96e541",
+    "childrenCardIDs": [
+      "uuid_02adb30bf17635f5"
+    ],
+    "parentCardIDs": [
+      "uuid_a53dd7b55b3b90b2"
+    ],
+    "speaker": "client",
+    "messages": "Hope so!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "2858",
+    "ypos": "42",
+    "key": "uuid_9531ab3537d150e8",
+    "ref": "uuid_db085a265c96e541"
+  },
+  "uuid_02adb30bf17635f5": {
+    "cardID": "uuid_02adb30bf17635f5",
+    "childrenCardIDs": [
+      "uuid_9492c7698dfd6792"
+    ],
+    "parentCardIDs": [
+      "uuid_db085a265c96e541"
+    ],
+    "speaker": "ai",
+    "messages": "No worries. At least you're getting a lot done!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "3306",
+    "ypos": "39",
+    "key": "uuid_430be6fc3ab9110a",
+    "ref": "uuid_02adb30bf17635f5"
+  },
+  "uuid_9492c7698dfd6792": {
+    "cardID": "uuid_9492c7698dfd6792",
+    "childrenCardIDs": [
+      "uuid_7261b154498fe63b"
+    ],
+    "parentCardIDs": [
+      "uuid_02adb30bf17635f5"
+    ],
+    "speaker": "client",
+    "messages": "Yup.",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "3756",
+    "ypos": "38",
+    "key": "uuid_1e74d288aed0374b",
+    "ref": "uuid_9492c7698dfd6792"
+  },
+  "uuid_7261b154498fe63b": {
+    "cardID": "uuid_7261b154498fe63b",
+    "childrenCardIDs": [
+      "uuid_dd8afeb7b9947bab"
+    ],
+    "parentCardIDs": [
+      "uuid_9492c7698dfd6792"
+    ],
+    "speaker": "ai",
+    "messages": "Did you know exercise increases production of your brain's feel-good neurotransmitters, called endorphins. These can help you feel happier and more relaxed, and boost your confidence and self esteem. It's a great way to unwind after a hard day's work. That's alright, it happens sometimes. Even doing something as small as making an effort to walk more briskly can help control your weight.",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "4212",
+    "ypos": "36",
+    "key": "uuid_7452767230fc14de",
+    "ref": "uuid_7261b154498fe63b"
+  },
+  "uuid_dd8afeb7b9947bab": {
+    "cardID": "uuid_dd8afeb7b9947bab",
+    "childrenCardIDs": [
+      "uuid_b8492692b16fa24e"
+    ],
+    "parentCardIDs": [
+      "uuid_7261b154498fe63b"
+    ],
+    "speaker": "client",
+    "messages": "Cool!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "4659",
+    "ypos": "35",
+    "key": "uuid_b8de2921e50a319c",
+    "ref": "uuid_dd8afeb7b9947bab"
+  },
+  "uuid_b8492692b16fa24e": {
+    "cardID": "uuid_b8492692b16fa24e",
+    "childrenCardIDs": [
+      "uuid_a408f0808420c7ea"
+    ],
+    "parentCardIDs": [
+      "uuid_dd8afeb7b9947bab"
+    ],
+    "speaker": "ai",
+    "messages": "Yup, I feel that. But you can even work some physical activity into your busy day. Like walking or biking your errands. Anything less than a 1-2 miles is fair game!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "5121",
+    "ypos": "30",
+    "key": "uuid_380b2460f0ab357b",
+    "ref": "uuid_b8492692b16fa24e"
+  },
+  "uuid_a408f0808420c7ea": {
+    "cardID": "uuid_a408f0808420c7ea",
+    "parentCardIDs": [
+      "uuid_b8492692b16fa24e"
+    ],
+    "speaker": "client",
+    "messages": "Hmm, good point!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "5571",
+    "ypos": "30",
+    "key": "uuid_df10479603d223ee",
+    "ref": "uuid_a408f0808420c7ea"
+  },
+  "uuid_88b41aaf76ce67db": {
+    "cardID": "uuid_88b41aaf76ce67db",
+    "parentCardIDs": [
+      "uuid_596cfc2301a38b68"
+    ],
+    "speaker": "client",
+    "messages": "Ok!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "2853",
+    "ypos": "333",
+    "key": "uuid_855178b0204d104a",
+    "ref": "uuid_88b41aaf76ce67db"
+  },
+  "uuid_02b31f3b8e18a6e7": {
+    "cardID": "uuid_02b31f3b8e18a6e7",
+    "childrenCardIDs": [
+      "uuid_531327df32ad1f4e"
+    ],
+    "parentCardIDs": [
+      "uuid_596cfc2301a38b68"
+    ],
+    "speaker": "client",
+    "messages": "I'm driving.",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "2853",
+    "ypos": "506",
+    "key": "uuid_44af61ad593b9439",
+    "ref": "uuid_02b31f3b8e18a6e7"
+  },
+  "uuid_531327df32ad1f4e": {
+    "cardID": "uuid_531327df32ad1f4e",
+    "childrenCardIDs": [
+      "uuid_e7f60ec15cbf1821"
+    ],
+    "parentCardIDs": [
+      "uuid_02b31f3b8e18a6e7"
+    ],
+    "speaker": "ai",
+    "messages": " Oh then that won't work. Park a little further away to get a quick walk in?",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "3291",
+    "ypos": "334",
+    "key": "uuid_5f0abb13ae4fb369",
+    "ref": "uuid_531327df32ad1f4e"
+  },
+  "uuid_573a73dbc2195c9d": {
+    "cardID": "uuid_573a73dbc2195c9d",
+    "parentCardIDs": [
+      "uuid_d4690f931d9ad875"
+    ],
+    "speaker": "ai",
+    "messages": "Sorry to hear that! If you're feeling ill, it might be time to see a doctor. Keep taking it easy until you're feeling better!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "2363.88888888889",
+    "ypos": "637",
+    "key": "uuid_fd12db17b381a3b4",
+    "ref": "uuid_573a73dbc2195c9d"
+  },
+  "uuid_38c29b9f67ef2d82": {
+    "cardID": "uuid_38c29b9f67ef2d82",
+    "parentCardIDs": [
+      "uuid_ae8b1ae142b3a24f"
+    ],
+    "speaker": "client",
+    "messages": "Go me!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-976",
+    "ypos": "76",
+    "childrenCardIDs": [
+      "uuid_5381339918b7b6d4"
+    ],
+    "key": "uuid_c0bad8f56c4b45ea",
+    "ref": "uuid_38c29b9f67ef2d82"
+  },
+  "uuid_5381339918b7b6d4": {
+    "cardID": "uuid_5381339918b7b6d4",
+    "childrenCardIDs": [
+      "uuid_34af8e8a09ca9803"
+    ],
+    "parentCardIDs": [
+      "uuid_38c29b9f67ef2d82"
+    ],
+    "speaker": "ai",
+    "messages": " Regular exercise like this can help combat lots of health conditions like cardiovascular disease, stroke, type 2 diabetes, depression, and more!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-978",
+    "ypos": "358",
+    "key": "uuid_24577a9eede36b45",
+    "ref": "uuid_5381339918b7b6d4"
+  },
+  "uuid_34af8e8a09ca9803": {
+    "cardID": "uuid_34af8e8a09ca9803",
+    "childrenCardIDs": [
+      "uuid_9db858d721c6bf85",
+      "uuid_04f7e1973a3f7f22",
+      "uuid_28fb43d98884d362"
+    ],
+    "parentCardIDs": [
+      "uuid_5381339918b7b6d4"
+    ],
+    "speaker": "client",
+    "messages": "You don't say?",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-979",
+    "ypos": "630",
+    "key": "uuid_371859d359d21cf2",
+    "ref": "uuid_34af8e8a09ca9803"
+  },
+  "uuid_9db858d721c6bf85": {
+    "cardID": "uuid_9db858d721c6bf85",
+    "parentCardIDs": [
+      "uuid_34af8e8a09ca9803"
+    ],
+    "speaker": "ai",
+    "messages": "I do! Now keep up the good work you stud muffin.",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-976",
+    "ypos": "899",
+    "key": "uuid_b4b258725eb274d1",
+    "ref": "uuid_9db858d721c6bf85"
+  },
+  "uuid_04f7e1973a3f7f22": {
+    "cardID": "uuid_04f7e1973a3f7f22",
+    "childrenCardIDs": [
+      "uuid_2af2be881a40fbeb"
+    ],
+    "parentCardIDs": [
+      "uuid_34af8e8a09ca9803"
+    ],
+    "speaker": "ai",
+    "messages": "Getting consistent physical activity like this can help you fall asleep faster and sleep better. Judging by your ZZZs lately, you could use the help!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-520",
+    "ypos": "635",
+    "key": "uuid_71dbee3d2b8825fb",
+    "ref": "uuid_04f7e1973a3f7f22"
+  },
+  "uuid_2af2be881a40fbeb": {
+    "cardID": "uuid_2af2be881a40fbeb",
+    "parentCardIDs": [
+      "uuid_04f7e1973a3f7f22"
+    ],
+    "speaker": "client",
+    "messages": "Good to know!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-521",
+    "ypos": "881",
+    "key": "uuid_ffd4ef8aefad8c3c",
+    "ref": "uuid_2af2be881a40fbeb"
+  },
+  "uuid_28fb43d98884d362": {
+    "cardID": "uuid_28fb43d98884d362",
+    "childrenCardIDs": [
+      "uuid_5a4b4f780e67701f",
+      "uuid_8cb233992873e19c"
+    ],
+    "parentCardIDs": [
+      "uuid_34af8e8a09ca9803"
+    ],
+    "speaker": "ai",
+    "messages": " Getting this amount of exercise can help boost your energy levels and self esteem. How are you feeling?",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-1401",
+    "ypos": "628",
+    "key": "uuid_ebb8bfa471510b87",
+    "ref": "uuid_28fb43d98884d362"
+  },
+  "uuid_5a4b4f780e67701f": {
+    "cardID": "uuid_5a4b4f780e67701f",
+    "childrenCardIDs": [
+      "uuid_173b504edbe803c7"
+    ],
+    "parentCardIDs": [
+      "uuid_28fb43d98884d362"
+    ],
+    "speaker": "client",
+    "messages": "Pretty good",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-1809",
+    "ypos": "629",
+    "key": "uuid_fd2fa75d9d9dd581",
+    "ref": "uuid_5a4b4f780e67701f"
+  },
+  "uuid_8cb233992873e19c": {
+    "cardID": "uuid_8cb233992873e19c",
+    "parentCardIDs": [
+      "uuid_28fb43d98884d362"
+    ],
+    "speaker": "client",
+    "messages": "Not great",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-1397",
+    "ypos": "915",
+    "key": "uuid_2eca91890bbde140",
+    "ref": "uuid_8cb233992873e19c"
+  },
+  "uuid_173b504edbe803c7": {
+    "cardID": "uuid_173b504edbe803c7",
+    "parentCardIDs": [
+      "uuid_5a4b4f780e67701f"
+    ],
+    "speaker": "ai",
+    "messages": "Glad to hear it! Exercise can get you feeling this good under the sheets as well. Studies show physical activity can even enhance sexual arousal for women! -or- Studies show men who are more physically active even have less problems with erectile dysfunction!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-1806",
+    "ypos": "917",
+    "key": "uuid_4cba11e41d14fb84",
+    "ref": "uuid_173b504edbe803c7"
+  },
+  "uuid_a339da9203a35e2c": {
+    "cardID": "uuid_a339da9203a35e2c",
+    "parentCardIDs": [
+      "uuid_36c7383e2db677ad"
+    ],
+    "speaker": "client",
+    "messages": "I'm on fire!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "347",
+    "ypos": "-821",
+    "childrenCardIDs": [
+      "uuid_cd3c9904102eb1dd",
+      "uuid_9454e7cb4408ab35",
+      "uuid_c3f96aa526d0aab7"
+    ],
+    "key": "uuid_32b719d41f0ca643",
+    "ref": "uuid_a339da9203a35e2c"
+  },
+  "uuid_cd3c9904102eb1dd": {
+    "cardID": "uuid_cd3c9904102eb1dd",
+    "parentCardIDs": [
+      "uuid_a339da9203a35e2c"
+    ],
+    "speaker": "ai",
+    "messages": " With moves like this, you're increasing your endurance and muscle strength, which will help your cardiovascular system work more efficiently.",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "346",
+    "ypos": "-597",
+    "childrenCardIDs": [
+      "uuid_e6db25ee9fc71bf1"
+    ],
+    "key": "uuid_cb5483d51b7634f9",
+    "ref": "uuid_cd3c9904102eb1dd"
+  },
+  "uuid_e6db25ee9fc71bf1": {
+    "cardID": "uuid_e6db25ee9fc71bf1",
+    "parentCardIDs": [
+      "uuid_cd3c9904102eb1dd"
+    ],
+    "speaker": "ai",
+    "messages": "Yay for more energy!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "353",
+    "ypos": "-374",
+    "key": "uuid_e08cd2baa5b21875",
+    "ref": "uuid_e6db25ee9fc71bf1"
+  },
+  "uuid_9454e7cb4408ab35": {
+    "cardID": "uuid_9454e7cb4408ab35",
+    "childrenCardIDs": [
+      "uuid_6f53a1cadf6cb4ea"
+    ],
+    "parentCardIDs": [
+      "uuid_a339da9203a35e2c"
+    ],
+    "speaker": "ai",
+    "messages": " After exercise like this, the Mayo clinic says that you'll often find that you've forgotten the day's irritations and concentrated only on your body's movements. As you begin to regularly shed your daily tensions through movement and physical activity, you may find that this focus on a single task, and the resulting energy and optimism, can help you remain calm and clear in everything that you do.",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "805",
+    "ypos": "-821",
+    "key": "uuid_addce342e2308f25",
+    "ref": "uuid_9454e7cb4408ab35"
+  },
+  "uuid_6f53a1cadf6cb4ea": {
+    "cardID": "uuid_6f53a1cadf6cb4ea",
+    "parentCardIDs": [
+      "uuid_9454e7cb4408ab35"
+    ],
+    "speaker": "client",
+    "messages": "namaste",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1223",
+    "ypos": "-834.25",
+    "key": "uuid_de2059218f4ae651",
+    "ref": "uuid_6f53a1cadf6cb4ea"
+  },
+  "uuid_c3f96aa526d0aab7": {
+    "cardID": "uuid_c3f96aa526d0aab7",
+    "childrenCardIDs": [
+      "uuid_9ac15cc0851379ae"
+    ],
+    "parentCardIDs": [
+      "uuid_a339da9203a35e2c"
+    ],
+    "speaker": "ai",
+    "messages": " Your activity levels are helping prevent cognitive decline and even sharpening your memory! Exercise increases production of cells in the hippocampus responsible for memory and learning.",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "808.25",
+    "ypos": "-534.75",
+    "key": "uuid_443925db38df743c",
+    "ref": "uuid_c3f96aa526d0aab7"
+  },
+  "uuid_9ac15cc0851379ae": {
+    "cardID": "uuid_9ac15cc0851379ae",
+    "childrenCardIDs": [
+      "uuid_952ee6a6a85e4bd8"
+    ],
+    "parentCardIDs": [
+      "uuid_c3f96aa526d0aab7"
+    ],
+    "speaker": "client",
+    "messages": "Wow, that's unforgettable!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1245.5",
+    "ypos": "-535",
+    "key": "uuid_696d3ad042611bdc",
+    "ref": "uuid_9ac15cc0851379ae"
+  },
+  "uuid_952ee6a6a85e4bd8": {
+    "cardID": "uuid_952ee6a6a85e4bd8",
+    "parentCardIDs": [
+      "uuid_9ac15cc0851379ae"
+    ],
+    "speaker": "ai",
+    "messages": " Oh yeah! Keep up these moves!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1668.5",
+    "ypos": "-536.25",
+    "key": "uuid_32cb5ce44ff1591c",
+    "ref": "uuid_952ee6a6a85e4bd8"
+  },
+  "uuid_e7f60ec15cbf1821": {
+    "cardID": "uuid_e7f60ec15cbf1821",
+    "parentCardIDs": [
+      "uuid_531327df32ad1f4e"
+    ],
+    "speaker": "client",
+    "messages": "Ok!",
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "3291",
+    "ypos": "734",
+    "key": "uuid_08062f18ce85281a",
+    "ref": "uuid_e7f60ec15cbf1821"
+  },
+  "uuid_33107b1468a4f054": {
+    "cardID": "uuid_33107b1468a4f054",
+    "parentCardIDs": [
+      "root"
+    ],
+    "speaker": "ai",
+    "messages": [
+      "You're at %{exerciseDurationToday} of activity for today (below personal average/30mins)",
+      "You've still got %{exerciseDurationUnderGoal} to go to get to your %{exerciseDurationGoal} of activity for the day!",
+      "You haven't been as active as you normally are by now.",
+      "You missed that walk you normally do around this time"
+    ],
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "330.727272727273",
+    "ypos": "-8.63636363636364",
+    "childrenCardIDs": [
+      "uuid_6c826db05f7a8099"
+    ],
+    "key": "uuid_8ffd17be4f41da76",
+    "ref": "uuid_33107b1468a4f054",
+    "filters": "##exerciseDurationToday $$lessThan ##lowerGoalRange"
+  },
+  "uuid_da1b59d2403d60ec": {
+    "cardID": "uuid_da1b59d2403d60ec",
+    "childrenCardIDs": [
+      "uuid_a11ff7de61b74ad3",
+      "uuid_10db45615a5107e4",
+      "uuid_d4690f931d9ad875",
+      "uuid_2afe318de46a2f2d"
+    ],
+    "parentCardIDs": [
+      "uuid_6c826db05f7a8099"
+    ],
+    "speaker": "ai",
+    "messages": [
+      "That's a little low for you. What's up?",
+      " That's not too much compared to your average. How are you?",
+      "There's definitely room to improve there. Everything alright?"
+    ],
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "1207",
+    "ypos": "272",
+    "key": "uuid_3881c988d7fba74b",
+    "ref": "uuid_da1b59d2403d60ec"
+  },
+  "uuid_36c7383e2db677ad": {
+    "cardID": "uuid_36c7383e2db677ad",
+    "childrenCardIDs": [
+      "uuid_a339da9203a35e2c"
+    ],
+    "parentCardIDs": [
+      "root"
+    ],
+    "speaker": "ai",
+    "messages": [
+      "You're on a roll! %{exerciseDurationToday} of activity and counting...",
+      " You're flying at %{exerciseDurationOverGoal} over your personal goal so far today!",
+      " You've well surpassed the daily 30min recommendation with %{exerciseDurationToday} so far!",
+      "%{exerciseDurationToday} of activity so far today (above personal average/30mins)"
+    ],
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-95",
+    "ypos": "-395",
+    "key": "uuid_9fa5e4ec115362a5",
+    "ref": "uuid_36c7383e2db677ad",
+    "filters": "##exerciseDurationToday $$greaterThan ##upperGoalRange"
+  },
+  "uuid_ae8b1ae142b3a24f": {
+    "cardID": "uuid_ae8b1ae142b3a24f",
+    "childrenCardIDs": [
+      "uuid_38c29b9f67ef2d82"
+    ],
+    "parentCardIDs": [
+      "root"
+    ],
+    "speaker": "ai",
+    "messages": [
+      "You've gotten %{exerciseDurationToday} of activity so far today! ",
+      " Way to go! You've reached your daily goal of at least %{lowerGoalRange} of exercise with a total of %{exerciseDurationToday} so far today.",
+      "Way to keep regular! You're well within your average activity today with a total of %{exerciseDurationToday}."
+    ],
+    "visible": "true",
+    "highlight": "false",
+    "xpos": "-89.9090909090909",
+    "ypos": "162.909090909091",
+    "key": "uuid_85aa062fa6f89043",
+    "ref": "uuid_ae8b1ae142b3a24f",
+    "filters": "##exerciseDurationToday $$between ##lowerGoalRange ##upperGoalRange"
+  }
+}
