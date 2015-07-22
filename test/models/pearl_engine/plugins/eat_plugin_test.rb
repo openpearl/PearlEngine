@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module PearlEngine
-  class MoveModuleTest < ActiveSupport::TestCase
+  class Plugins::EatPluginTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true
     # end

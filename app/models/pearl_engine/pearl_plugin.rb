@@ -1,11 +1,11 @@
-# The superclass from which all the pearl modules will inherit from.
+# The superclass from which all the pearl plugins will inherit from.
 module PearlEngine
-  class PearlModule < ActiveRecord::Base
-    # This is the name of the json file that defining the conversation tree which this module depends on.
+  class PearlPlugin < ActiveRecord::Base
+    # This is the name of the json file that defining the conversation tree which this plugin depends on.
     @@inputFileName = nil
 
 
-    # This is a hash containing all the data attributes that the module requires to function.
+    # This is a hash containing all the data attributes that the plugin requires to function.
     # Must specify the sampleType and unit for context which is tied to Healthkit data.
     # An example @@contextRequirement for interacting with iOS to get step count context is:
     #     @@ContextRequirements = {
@@ -17,7 +17,7 @@ module PearlEngine
     @@ContextRequirements = nil
 
 
-    # The conversationHash instance variable stores a full hash of the conversation tree for this module.
+    # The conversationHash instance variable stores a full hash of the conversation tree for this plugin.
     attr_reader :conversationHash
 
   
@@ -67,18 +67,18 @@ module PearlEngine
     # Evaluates the filter expression and returns true or false
     def pass_filter?(filter)
       
-      # Test data
-      @contextDataHash = {
-        "exerciseDurationGoal": 1800,
-        "exerciseDurationToday": 1610,
-        "exerciseDurationAvg": 1500,
-        "exerciseDurationAboveAvg": 1700,
-        "exerciseDurationBelowAvg": 1300,
-        "exerciseDurationOverGoal": 0,
-        "exerciseDurationUnderGoal": 190,
-        "upperGoalRange": 2000,
-        "lowerGoalRange": 1600
-      }
+      # # Test data
+      # @contextDataHash = {
+      #   "exerciseDurationGoal": 1800,
+      #   "exerciseDurationToday": 1610,
+      #   "exerciseDurationAvg": 1500,
+      #   "exerciseDurationAboveAvg": 1700,
+      #   "exerciseDurationBelowAvg": 1300,
+      #   "exerciseDurationOverGoal": 0,
+      #   "exerciseDurationUnderGoal": 190,
+      #   "upperGoalRange": 2000,
+      #   "lowerGoalRange": 1600
+      # }
       
       comparator = filter.scan(/\${2}\w+/)[0].sub(/../,"")
       variables = filter.scan(/\#{2}\w+/)
@@ -139,7 +139,7 @@ module PearlEngine
     # respective values stored in the contextDataHash. Returns the conversation hash at that conversation node.
     def converse(cardID = "root")
 
-    # Test data
+    ## Test data
     # @contextDataHashWithUnits = {
     #     "exerciseDurationGoal": self.timeWithUnit(1800),
     #     "exerciseDurationToday": self.timeWithUnit(1610),

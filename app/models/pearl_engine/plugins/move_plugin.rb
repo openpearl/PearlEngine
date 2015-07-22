@@ -1,16 +1,15 @@
 module PearlEngine
-  class Modules::MoveModule < PearlModule
-    # This is the name of the json file that defining the conversation tree which this module depends on.
+  class Plugins::MovePlugin < PearlPlugin
+    # This is the name of the json file that defining the conversation tree which this plugin depends on.
     @@inputFileName = "move.json"
 
 
-    # This is a hash containing all the data attributes that the module requires to function.
+    # This is a hash containing all the data attributes that the plugin requires to function.
     @@ContextRequirements = {
       "HKQuantityTypeIdentifierStepCount": {
         "sampleType": "HKQuantityTypeIdentifierStepCount",
         "unit": "count"
-      },
-      "PearlDataBloodType": ""
+      }
     }
 
 
@@ -18,7 +17,7 @@ module PearlEngine
     # The average number of daily steps walked for the logged-in user
     def calcStepsAvg(contextData)
       stepsTotal = 0
-      daysDifference = 0
+      daysDifference = 1
       
       if not contextData["HKQuantityTypeIdentifierStepCount"].nil?
         startDate = contextData["HKQuantityTypeIdentifierStepCount"][0]["startDate"]
