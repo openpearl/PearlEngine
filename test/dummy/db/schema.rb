@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707183010) do
+ActiveRecord::Schema.define(version: 20150721205535) do
 
-  create_table "pearl_engine_pearl_modules", force: :cascade do |t|
+  create_table "pearl_engine_pearl_plugins", force: :cascade do |t|
     t.string   "type"
-    t.integer  "use_count",  default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
