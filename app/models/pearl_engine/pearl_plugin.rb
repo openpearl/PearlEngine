@@ -65,7 +65,8 @@ module PearlEngine
 
     # Input: a filter string with the format (##VARIABLE1 $$COMPARATOR ##VARIABLE2)
     # Evaluates the filter expression and returns true or false
-    def pass_filter?(filter)
+    def pass_filter?(filter, user)
+      @contextDataHash = Rails.cache.read("#{user}/contextDataHash")
       
       # # Test data
       # @contextDataHash = {
@@ -137,8 +138,9 @@ module PearlEngine
 
     # Takes as a parameter the ID of a conversation node. Replaces variables in the conversation node with their
     # respective values stored in the contextDataHash. Returns the conversation hash at that conversation node.
-    def converse(cardID = "root")
+    def converse(cardID = "root", user)
 
+      @contextDataHashWithUnits = Rails.cache.read("#{user}/contextDataHashWithUnits")
     ## Test data
     # @contextDataHashWithUnits = {
     #     "exerciseDurationGoal": self.timeWithUnit(1800),
