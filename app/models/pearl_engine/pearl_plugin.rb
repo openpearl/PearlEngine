@@ -66,30 +66,18 @@ module PearlEngine
     # Input: a filter string with the format (##VARIABLE1 $$COMPARATOR ##VARIABLE2)
     # Evaluates the filter expression and returns true or false
     def pass_filter?(filter, user)
-      @contextDataHash = Rails.cache.read("#{user}/contextDataHash")
+      contextDataHash = Rails.cache.read("#{user}/contextDataHash")
       
-      # # Test data
-      # @contextDataHash = {
-      #   "exerciseDurationGoal": 1800,
-      #   "exerciseDurationToday": 1610,
-      #   "exerciseDurationAvg": 1500,
-      #   "exerciseDurationAboveAvg": 1700,
-      #   "exerciseDurationBelowAvg": 1300,
-      #   "exerciseDurationOverGoal": 0,
-      #   "exerciseDurationUnderGoal": 190,
-      #   "upperGoalRange": 2000,
-      #   "lowerGoalRange": 1600
-      # }
       
       comparator = filter.scan(/\${2}\w+/)[0].sub(/../,"")
       variables = filter.scan(/\#{2}\w+/)
       var1 = variables[0].sub(/../,"")
-      var1 = @contextDataHash.with_indifferent_access[var1]
+      var1 = contextDataHash.with_indifferent_access[var1]
       var2 = variables[1].sub(/../,"")
-      var2 = @contextDataHash.with_indifferent_access[var2]
+      var2 = contextDataHash.with_indifferent_access[var2]
       if comparator == "between"
         var3 = variables[2].sub(/../,"")
-        var3 = @contextDataHash.with_indifferent_access[var3]
+        var3 = contextDataHash.with_indifferent_access[var3]
         send(comparator, var1, var2, var3)
       else
         send(comparator, var1, var2)
@@ -104,13 +92,21 @@ module PearlEngine
       if seconds > 3600
         hours = (seconds/3600).floor
         seconds = seconds%3600
-        return hours.to_s + " hours and " + self.timeWithUnit(seconds)
+        if seconds > 0
+          return hours.to_s + " hours and " + self.timeWithUnit(seconds)
+        else
+          return hours.to_s + " hours"
+        end
       elsif seconds == 3600
         return "1 hour"
       elsif seconds > 60
         minutes = (seconds/60).floor
         seconds = seconds%60
-        return minutes.to_s + " minutes and " + self.timeWithUnit(seconds)
+        if seconds > 0
+          return minutes.to_s + " minutes and " + self.timeWithUnit(seconds)
+        else
+          return minutes.to_s + " minutes"
+        end
       elsif seconds == 60
         return "1 minute"
       elsif seconds > 1
@@ -140,26 +136,15 @@ module PearlEngine
     # respective values stored in the contextDataHash. Returns the conversation hash at that conversation node.
     def converse(cardID = "root", user)
 
-      @contextDataHashWithUnits = Rails.cache.read("#{user}/contextDataHashWithUnits")
-    ## Test data
-    # @contextDataHashWithUnits = {
-    #     "exerciseDurationGoal": self.timeWithUnit(1800),
-    #     "exerciseDurationToday": self.timeWithUnit(1610),
-    #     "exerciseDurationAvg": self.timeWithUnit(1500),
-    #     "exerciseDurationAboveAvg": self.timeWithUnit(1700),
-    #     "exerciseDurationBelowAvg": self.timeWithUnit(1200),
-    #     "exerciseDurationOverGoal": self.timeWithUnit(0),
-    #     "exerciseDurationUnderGoal": self.timeWithUnit(190),
-    #     "upperGoalRange": self.timeWithUnit(2000),
-    #     "lowerGoalRange": self.timeWithUnit(1600)
-    #   }
+      contextDataHashWithUnits = Rails.cache.read("#{user}/contextDataHashWithUnits")
+
 
       card = @conversationHash[cardID]
       if not card["messages"].nil?
         if card["messages"].class == Array
-          card["messages"].map! {|message| message % @contextDataHashWithUnits}
+          card["messages"].map! {|message| message % contextDataHashWithUnits}
         else
-          card["messages"] =  card["messages"] % @contextDataHashWithUnits
+          card["messages"] =  card["messages"] % contextDataHashWithUnits
         end
       end
 
