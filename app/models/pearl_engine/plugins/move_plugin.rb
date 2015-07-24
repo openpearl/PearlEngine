@@ -13,7 +13,6 @@ module PearlEngine
     }
 
 
-
     # The average number of daily steps walked for the logged-in user
     def calcStepsAvg(contextData)
       stepsTotal = 0
@@ -117,8 +116,8 @@ module PearlEngine
     end
 
 
-    # Calculates and instantiates all the instance variables, and stores them in @contextDataHash.
-    def initializeContext(contextData)
+    # Calculates and instantiates all the instance variables, and stores them in the rails cache.
+    def initializeContext(contextData, user)
       self.calcStepsAvg(contextData)
       self.calcStepsToday(contextData)
       self.calcExerciseDurationAvg
@@ -131,7 +130,7 @@ module PearlEngine
       self.calcUpperGoalRange
       self.calcLowerGoalRange
 
-      @contextDataHash = {
+      contextDataHash = {
         "exerciseDurationGoal": @exerciseDurationGoal,
         "exerciseDurationToday": @exerciseDurationToday,
         "exerciseDurationAvg": @exerciseDurationAvg,
@@ -143,7 +142,7 @@ module PearlEngine
         "lowerGoalRange": @lowerGoalRange
       }
 
-      @contextDataHashWithUnits = {
+      contextDataHashWithUnits = {
         "exerciseDurationGoal": self.timeWithUnit(@exerciseDurationGoal),
         "exerciseDurationToday": self.timeWithUnit(@exerciseDurationToday),
         "exerciseDurationAvg": self.timeWithUnit(@exerciseDurationAvg),
@@ -155,7 +154,12 @@ module PearlEngine
         "lowerGoalRange": self.timeWithUnit(@lowerGoalRange)
       }
 
-      return @contextDataHashWithUnits
+
+      
+      Rails.cache.write("#{user}/contextDataHash", contextDataHash,  expires_in: 1.hour)
+      Rails.cache.write("#{user}/contextDataHashWithUnits", contextDataHashWithUnits,  expires_in: 1.hour)
+
+      return "success"
     end
 
   end
