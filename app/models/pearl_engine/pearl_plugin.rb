@@ -114,7 +114,7 @@ module PearlEngine
       elsif seconds == 1
         return "1 second"
       else
-        return ""
+        return "0 seconds"
       end
     end
 
