@@ -31,7 +31,7 @@ module PearlEngine
             endDate = steps["endDate"]
           end
         end
-        daysDifference = (DateTime.parse(endDate) - DateTime.parse(startDate)).floor
+        daysDifference = 1 + (DateTime.parse(endDate) - DateTime.parse(startDate)).floor
       end
       @stepsAvg = stepsTotal/daysDifference
     end
