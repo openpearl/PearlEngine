@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pearl_engine (0.0.1)
+    pearl_engine (1.1.0)
       rails (~> 4.2.1)
 
 GEM
