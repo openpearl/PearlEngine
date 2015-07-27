@@ -1,6 +1,6 @@
 # The superclass from which all the pearl plugins will inherit from.
 module PearlEngine
-  class PearlPlugin < ActiveRecord::Base
+  class PearlPlugin 
     # This is the name of the json file that defining the conversation tree which this plugin depends on.
     @@inputFileName = nil
 
