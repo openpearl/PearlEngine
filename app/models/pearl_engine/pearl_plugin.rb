@@ -1,20 +1,21 @@
 # The superclass from which all the pearl plugins will inherit from.
 module PearlEngine
   class PearlPlugin 
-    # This is the name of the json file that defining the conversation tree which this plugin depends on.
-    @@inputFileName = nil
+    def initialize
+      # This is the name of the json file that defines the conversation tree which this plugin depends on.
+      @inputFileName = nil
 
-
-    # This is a hash containing all the data attributes that the plugin requires to function.
-    # Must specify the sampleType and unit for context which is tied to Healthkit data.
-    # An example @@contextRequirement for interacting with iOS to get step count context is:
-    #     @@ContextRequirements = {
-    #     "HKQuantityTypeIdentifierStepCount": {
-    #       "sampleType": "HKQuantityTypeIdentifierStepCount",
-    #       "unit": "count"
-    #       }
-    #     }
-    @@ContextRequirements = nil
+      # This is a hash containing all the data attributes that the plugin requires to function.
+      # Must specify the sampleType and unit for context which is tied to Healthkit data.
+      # An example @contextRequirement for interacting with iOS to get step count context is:
+      #     @ContextRequirements = {
+      #     "HKQuantityTypeIdentifierStepCount": {
+      #       "sampleType": "HKQuantityTypeIdentifierStepCount",
+      #       "unit": "count"
+      #       }
+      #     }
+      @ContextRequirements = nil
+    end
 
 
     # The conversationHash instance variable stores a full hash of the conversation tree for this plugin.
@@ -22,7 +23,7 @@ module PearlEngine
 
   
     def getContextRequirements
-      return @@ContextRequirements
+      return @ContextRequirements
     end
 
 
@@ -125,7 +126,7 @@ module PearlEngine
       spec = Bundler.load.specs.find{|s| s.name == 'pearl_engine' }
       raise GemNotFound, "Could not find pearl_engine in the current bundle." unless spec
       pearlEngineRootPath = spec.full_gem_path
-      filePath = File.join(pearlEngineRootPath, 'lib', 'pearl_engine', 'json_files', @@inputFileName)
+      filePath = File.join(pearlEngineRootPath, 'lib', 'pearl_engine', 'json_files', @inputFileName)
       conversation = File.read(filePath)
       conversation_hash = JSON.parse(conversation)
       @conversationHash = conversation_hash
