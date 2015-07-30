@@ -1,23 +1,6 @@
 module PearlEngine
   module Plugins
     class MovePlugin < PearlEngine::PearlPlugin
-      def initialize
-        # This is the name of the json file that defines the conversation tree which this plugin depends on.
-        @inputFileName = "move.json"
-
-
-        # This is a hash containing all the data attributes that the plugin requires to function.
-        @ContextRequirements = {
-          "HKQuantityTypeIdentifierStepCount": {
-            "sampleType": "HKQuantityTypeIdentifierStepCount",
-            "unit": "count"
-          }
-        }
-      end
-
-
-
-
       # The average number of daily steps walked for the logged-in user
       def calcStepsAvg(contextData)
         stepsTotal = 0
@@ -122,7 +105,7 @@ module PearlEngine
 
 
       # Calculates and instantiates all the instance variables, and stores them in the rails cache.
-      def initializeContext(contextData, user)
+      def initializeContext(contextData, userID)
         self.calcStepsAvg(contextData)
         self.calcStepsToday(contextData)
         self.calcExerciseDurationAvg
@@ -159,13 +142,31 @@ module PearlEngine
           "lowerGoalRange": self.timeWithUnit(@lowerGoalRange)
         }
 
-
-
-        Rails.cache.write("#{user}/contextDataHash", contextDataHash,  expires_in: 1.hour)
-        Rails.cache.write("#{user}/contextDataHashWithUnits", contextDataHashWithUnits,  expires_in: 1.hour)
-
+        Rails.cache.write("#{userID}/contextDataHash", contextDataHash,  expires_in: 1.hour)
+        Rails.cache.write("#{userID}/contextDataHashWithUnits", contextDataHashWithUnits,  expires_in: 1.hour)
         return "success"
       end
+
+
+
+      # ALL plugins must AT THE MINIMUM include the following 3 constants: INPUT_FILE_NAME, STORYBOARD, CONTEXT_REQUIREMENTS
+      private
+
+      # This is the name of the json file that defines the conversation tree which this plugin depends on.
+      INPUT_FILE_NAME = "move.json"
+
+      # This is the complete storyboard of the conversation
+      STORYBOARD = self.initializeStoryboard(INPUT_FILE_NAME)
+
+
+      # This is a hash containing all the data attributes that the plugin requires to function.
+      CONTEXT_REQUIREMENTS = {
+        "HKQuantityTypeIdentifierStepCount": {
+          "sampleType": "HKQuantityTypeIdentifierStepCount",
+          "unit": "count"
+        }
+      }
+
     end
   end
 end
