@@ -29,19 +29,19 @@ module PearlEngine
     end
 
 
-    # Returns a string representation of the start of today's date.
-    # For example, if today was January 2nd, 2000, it returns "2000-01-02 00:00:00".
+    # Returns in Unix time the start of today's date.
+    # For example, if today was January 1st, 2000 at 12AM, it returns 946702800.
     # FIXME: There could be a slight mismatch of dates since iOS HealthKit data is stored
     # with local time, while this is based off GMT. For example, if local time was 7/1 at 11PM while
     # GMT was 7/2 at 1am, then startOfDay would incorrectly return the start of 7/2 instead of 7/1.
     def startOfDay
-      Time.now.beginning_of_day.to_s(:db)
+      Time.now.beginning_of_day.to_i
     end
 
-    # Returns a string representation of the end of today's date.
-    # For example, if today was January 2nd, 2000, it returns "2000-01-02 23:59:59".
+    # Returns in Unix time the end of today's date.
+    # For example, if today was January 1st, 2000 at 12AM, it returns 946789199.
     def endOfDay
-      Time.now.end_of_day.to_s(:db)
+      Time.now.end_of_day.to_i
     end
 
 

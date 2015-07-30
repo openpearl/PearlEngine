@@ -9,6 +9,7 @@ module PearlEngine
         if not contextData["HKQuantityTypeIdentifierStepCount"].nil?
           startDate = contextData["HKQuantityTypeIdentifierStepCount"][0]["startDate"]
           endDate = contextData["HKQuantityTypeIdentifierStepCount"][0]["endDate"]
+          secondsInDay = 24*60*60
           contextData["HKQuantityTypeIdentifierStepCount"].each do |steps|
             stepsIncrement = steps["quantity"].to_i
             stepsTotal += stepsIncrement
@@ -19,7 +20,7 @@ module PearlEngine
               endDate = steps["endDate"]
             end
           end
-          daysDifference = 1 + (DateTime.parse(endDate) - DateTime.parse(startDate)).floor
+          daysDifference += ((Time.at(endDate) - Time.at(startDate))/secondsInDay).floor
         end
         @stepsAvg = stepsTotal/daysDifference
       end
