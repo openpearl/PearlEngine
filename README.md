@@ -37,4 +37,4 @@ module PearlEngine
   end
 end
 ```
-Be sure to define `@inputFileName`(name of the associated conversation tree json file), `@ContextRequirements`(the context data that this plugin will require), and the `initializeContext` method (directions for calculating any variables which you defined in the conversation tree).
+Be sure to define `INPUT_FILE_NAME`(name of the associated conversation tree json file), `STORYBOARD`(the conversation storyboard which is loaded from `INPUT_FILE_NAME`), `CONTEXT_REQUIREMENTS`(the context data that this plugin will require), and the `initializeContext` method (directions for calculating any variables which you defined in the conversation storyboard).
