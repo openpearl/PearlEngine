@@ -1,32 +1,31 @@
 # The superclass from which all the pearl plugins will inherit from.
 module PearlEngine
-  class PearlPlugin 
-    # This is the name of the json file that defining the conversation tree which this plugin depends on.
-    @@inputFileName = nil
+  class PearlPlugin
+    # Right now it is just picking a random plugin. 
+    # TODO: Make this smarter.
+    def self.choosePlugIn(userID)
+      if Rails.cache.read("#{userID}/plugin").nil?
+        pluginsList = PearlEngine::PearlPlugin.descendants
+        randomPlugin = pluginsList[Random.rand(pluginsList.length)]
+        randomPluginName = randomPlugin.to_s
+        Rails.cache.write("#{userID}/plugin", randomPluginName, expires_in: 1.hour)
+        return randomPlugin.new
+      else
+        pluginName = Rails.cache.read("#{userID}/plugin")
+        return pluginName.constantize.new
+      end
+    end 
 
 
-    # This is a hash containing all the data attributes that the plugin requires to function.
-    # Must specify the sampleType and unit for context which is tied to Healthkit data.
-    # An example @@contextRequirement for interacting with iOS to get step count context is:
-    #     @@ContextRequirements = {
-    #     "HKQuantityTypeIdentifierStepCount": {
-    #       "sampleType": "HKQuantityTypeIdentifierStepCount",
-    #       "unit": "count"
-    #       }
-    #     }
-    @@ContextRequirements = nil
-
-
-    # The conversationHash instance variable stores a full hash of the conversation tree for this plugin.
-    attr_reader :conversationHash
-
-  
-    def getContextRequirements
-      return @@ContextRequirements
+    # To be implemented by subclasses of PearlPlugin.
+    # Takes context data and performs calculations to get the data to be used in the conversation.
+    # Caches that data for quick access. 
+    def initializeContext(contextData, userID)
     end
 
 
-    def initializeContext
+    def getContextRequirements
+      return self.class::CONTEXT_REQUIREMENTS
     end
 
 
@@ -63,12 +62,10 @@ module PearlEngine
     end
 
 
-    # Input: a filter string with the format (##VARIABLE1 $$COMPARATOR ##VARIABLE2)
+    # Input: a filter string with the format (##VARIABLE1 $$COMPARATOR ##VARIABLE2 ##VARIABLE3)
     # Evaluates the filter expression and returns true or false
-    def pass_filter?(filter, user)
-      contextDataHash = Rails.cache.read("#{user}/contextDataHash")
-      
-      
+    def pass_filter?(filter, userID)
+      contextDataHash = Rails.cache.read("#{userID}/contextDataHash")
       comparator = filter.scan(/\${2}\w+/)[0].sub(/../,"")
       variables = filter.scan(/\#{2}\w+/)
       var1 = variables[0].sub(/../,"")
@@ -119,27 +116,12 @@ module PearlEngine
     end
 
 
-    # Given a valid inputFileName, this creates a conversation hash and intantiates it as the conversationHash
-    # instance variable.
-    def initializeConversation
-      spec = Bundler.load.specs.find{|s| s.name == 'pearl_engine' }
-      raise GemNotFound, "Could not find pearl_engine in the current bundle." unless spec
-      pearlEngineRootPath = spec.full_gem_path
-      filePath = File.join(pearlEngineRootPath, 'lib', 'pearl_engine', 'json_files', @@inputFileName)
-      conversation = File.read(filePath)
-      conversation_hash = JSON.parse(conversation)
-      @conversationHash = conversation_hash
-    end
 
-
-    # Takes as a parameter the ID of a conversation node. Replaces variables in the conversation node with their
-    # respective values stored in the contextDataHash. Returns the conversation hash at that conversation node.
-    def converse(cardID = "root", user)
-
-      contextDataHashWithUnits = Rails.cache.read("#{user}/contextDataHashWithUnits")
-
-
-      card = @conversationHash[cardID]
+    # Takes as a parameter the ID of a storyboard card. Replaces variables in the storyboard card with their
+    # respective values stored in the contextDataHash. Returns the a hash of information for that storyboard card.
+    def populateCardData(cardID, userID)
+      contextDataHashWithUnits = Rails.cache.read("#{userID}/contextDataHashWithUnits")
+      card = self.class::STORYBOARD[cardID].deep_dup
       if not card["messages"].nil?
         if card["messages"].class == Array
           card["messages"].map! {|message| message % contextDataHashWithUnits}
@@ -151,5 +133,88 @@ module PearlEngine
       return card
     end
 
+
+    # Gets the card at the requested cardID in the storyboard with all context data populated
+    def getCard(cardID = "root", userID)
+      if Rails.cache.read("#{userID}/contextDataHash").nil?
+        return nil
+      end
+
+      # Gets the card in the storyboard corresponding to the provided cardID
+      card = self.class::STORYBOARD[cardID]
+
+      # Checks to see if the card is the last card in the storyboard by checking whether or not
+      # it has children. If it does have children, then the conversation continues.
+      # If not, then we know that the conversation has come to an end.
+      if not card["childrenCardIDs"].nil?
+
+        # Filter out any invalid children
+        filteredCardIDs = []
+        card["childrenCardIDs"].each do |childCardID|
+          childCard = self.class::STORYBOARD[childCardID]
+          if not childCard["filters"].nil?
+            if self.pass_filter?(childCard["filters"], userID)
+              filteredCardIDs.push(childCardID)
+            end
+          else
+            filteredCardIDs.push(childCardID)
+          end
+        end
+
+
+        # If there is more than one valid child card after filtering, we choose a card
+        # randomly to proceed with in our conversation.
+        # We also pick an AI message randomly to add variety to the conversation.
+        numberOfchildren = filteredCardIDs.length
+        randomIndex = Random.rand(numberOfchildren)
+        randomID = filteredCardIDs[randomIndex]
+        childCard = self.populateCardData(randomID, userID)
+
+        if childCard["messages"].class == Array
+          numberOfMessages = childCard["messages"].length
+          randomMessage = Random.rand(numberOfMessages)
+          childCard["messages"] = childCard["messages"][randomMessage]
+        end
+
+        if not childCard["childrenCardIDs"].nil? 
+          # List of all the children cards of the chosen child card.
+          childrenArray = []
+          childCard["childrenCardIDs"].each do |nextCardID|
+            nextCard = self.class::STORYBOARD[nextCardID]
+            childrenArray.push(nextCard)
+          end
+
+          #Save the data about the children conversation nodes in the conversation hash under the
+          #key of "childrenCards".
+          childCard["childrenCards"] = childrenArray
+        end
+
+
+        #Renders a json of the conversation hash
+        return childCard
+      else
+        # Clear the cached data since we are at a leaf node of the storyboard,
+        # which means conversation has reached the end.
+        Rails.cache.delete("#{userID}/plugin")
+        Rails.cache.delete("#{userID}/contextDataHash")
+        Rails.cache.delete("#{userID}/contextDataHashWithUnits")
+        
+        return nil
+      end
+    end
+
+    private
+
+
+    # Given a valid inputFileName, this loads the complete storyboard as a json hash
+    def self.initializeStoryboard(fileName)
+      spec = Bundler.load.specs.find{|s| s.name == 'pearl_engine' }
+      raise GemNotFound, "Could not find pearl_engine in the current bundle." unless spec
+      pearlEngineRootPath = spec.full_gem_path
+      filePath = File.join(pearlEngineRootPath, 'lib', 'pearl_engine', 'json_files', fileName)
+      conversationTree = File.read(filePath)
+      storyboard = JSON.parse(conversationTree)
+      return storyboard
+    end
   end
 end
