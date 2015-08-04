@@ -1,7 +1,7 @@
 # The superclass from which all the pearl plugins will inherit from.
 module PearlEngine
   class PearlPlugin
-    # Right now it is just picking a random plugin. 
+    # Right now it is just picking a random plugin.
     # TODO: Make this smarter.
     def self.choosePlugIn(userID)
       if Rails.cache.read("#{userID}/plugin").nil?
@@ -14,18 +14,19 @@ module PearlEngine
         pluginName = Rails.cache.read("#{userID}/plugin")
         return pluginName.constantize.new
       end
-    end 
+    end
 
 
     # To be implemented by subclasses of PearlPlugin.
     # Takes context data and performs calculations to get the data to be used in the conversation.
-    # Caches that data for quick access. 
+    # Caches that data for quick access.
     def initializeContext(contextData, userID)
     end
 
 
     def getContextRequirements
-      return self.class::CONTEXT_REQUIREMENTS
+      contextRequirements = self.class::CONTEXT_REQUIREMENTS
+      return contextRequirements.with_indifferent_access
     end
 
 
@@ -65,16 +66,16 @@ module PearlEngine
     # Input: a filter string with the format (##VARIABLE1 $$COMPARATOR ##VARIABLE2 ##VARIABLE3)
     # Evaluates the filter expression and returns true or false
     def pass_filter?(filter, userID)
-      contextDataHash = Rails.cache.read("#{userID}/contextDataHash")
+      contextDataHash = Rails.cache.read("#{userID}/contextDataHash").with_indifferent_access
       comparator = filter.scan(/\${2}\w+/)[0].sub(/../,"")
       variables = filter.scan(/\#{2}\w+/)
       var1 = variables[0].sub(/../,"")
-      var1 = contextDataHash.with_indifferent_access[var1]
+      var1 = contextDataHash[var1]
       var2 = variables[1].sub(/../,"")
-      var2 = contextDataHash.with_indifferent_access[var2]
+      var2 = contextDataHash[var2]
       if comparator == "between"
         var3 = variables[2].sub(/../,"")
-        var3 = contextDataHash.with_indifferent_access[var3]
+        var3 = contextDataHash[var3]
         send(comparator, var1, var2, var3)
       else
         send(comparator, var1, var2)
@@ -136,6 +137,7 @@ module PearlEngine
 
     # Gets the card at the requested cardID in the storyboard with all context data populated
     def getCard(cardID = "root", userID)
+      # Ensures that the context data has already been calculated and cached before starting a conversation.
       if Rails.cache.read("#{userID}/contextDataHash").nil?
         return nil
       end
@@ -176,7 +178,7 @@ module PearlEngine
           childCard["messages"] = childCard["messages"][randomMessage]
         end
 
-        if not childCard["childrenCardIDs"].nil? 
+        if not childCard["childrenCardIDs"].nil?
           # List of all the children cards of the chosen child card.
           childrenArray = []
           childCard["childrenCardIDs"].each do |nextCardID|
@@ -198,13 +200,13 @@ module PearlEngine
         Rails.cache.delete("#{userID}/plugin")
         Rails.cache.delete("#{userID}/contextDataHash")
         Rails.cache.delete("#{userID}/contextDataHashWithUnits")
-        
+
         return nil
       end
     end
 
-    private
 
+    private
 
     # Given a valid inputFileName, this loads the complete storyboard as a json hash
     def self.initializeStoryboard(fileName)
@@ -213,7 +215,7 @@ module PearlEngine
       pearlEngineRootPath = spec.full_gem_path
       filePath = File.join(pearlEngineRootPath, 'lib', 'pearl_engine', 'json_files', fileName)
       conversationTree = File.read(filePath)
-      storyboard = JSON.parse(conversationTree)
+      storyboard = JSON.parse(conversationTree).with_indifferent_access
       return storyboard
     end
   end
