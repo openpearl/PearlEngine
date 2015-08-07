@@ -1,0 +1,451 @@
+{
+  "root": {
+    "cardID": "root",
+    "childrenCardIDs": [
+      "id_a975f3641b96216a"
+    ]
+  },
+  "id_fbdadaed251fa98d": {
+    "cardID": "id_fbdadaed251fa98d",
+    "childrenCardIDs": [
+      "id_99e3644937b442ef"
+    ],
+    "parentCardIDs": [
+      "id_a975f3641b96216a"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Drag down anytime to refresh our conversation :D"
+      ]
+    }
+  },
+  "id_99e3644937b442ef": {
+    "cardID": "id_99e3644937b442ef",
+    "childrenCardIDs": [
+      "id_0457e34b2d6b0482",
+      "id_3b3d2a5adef8aa36"
+    ],
+    "parentCardIDs": [
+      "id_fbdadaed251fa98d"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Would you like to login or register?"
+      ]
+    }
+  },
+  "id_0457e34b2d6b0482": {
+    "cardID": "id_0457e34b2d6b0482",
+    "childrenCardIDs": [
+      "id_ee2b5cafeeb8fc8f"
+    ],
+    "parentCardIDs": [
+      "id_99e3644937b442ef"
+    ],
+    "speaker": "client",
+    "cardBody": {
+      "messages": [
+        "login"
+      ]
+    }
+  },
+  "id_3b3d2a5adef8aa36": {
+    "cardID": "id_3b3d2a5adef8aa36",
+    "childrenCardIDs": [
+      "id_1feaf89309f16ff1"
+    ],
+    "parentCardIDs": [
+      "id_99e3644937b442ef"
+    ],
+    "speaker": "client",
+    "cardBody": {
+      "messages": [
+        "register"
+      ]
+    }
+  },
+  "id_1feaf89309f16ff1": {
+    "cardID": "id_1feaf89309f16ff1",
+    "childrenCardIDs": [
+      "id_56847df11b5bc5c0"
+    ],
+    "parentCardIDs": [
+      "id_3b3d2a5adef8aa36"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "So what should I call you?"
+      ]
+    }
+  },
+  "id_56847df11b5bc5c0": {
+    "cardID": "id_56847df11b5bc5c0",
+    "childrenCardIDs": [
+      "id_5e971b2081c6ee8a"
+    ],
+    "parentCardIDs": [
+      "id_1feaf89309f16ff1"
+    ],
+    "speaker": "client",
+    "inputs": [
+      "name"
+    ],
+    "cardType": "text"
+  },
+  "id_ee58ab8552b80a40": {
+    "cardID": "id_ee58ab8552b80a40",
+    "childrenCardIDs": [
+      "id_ee4f3f6e96d4d88b"
+    ],
+    "parentCardIDs": [
+      "id_5e971b2081c6ee8a"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Email?"
+      ]
+    }
+  },
+  "id_ee4f3f6e96d4d88b": {
+    "cardID": "id_ee4f3f6e96d4d88b",
+    "childrenCardIDs": [
+      "id_1d9f7486bdba81fa",
+      "id_0715f40d6d888394",
+      "id_d11e29a0dc486263"
+    ],
+    "parentCardIDs": [
+      "id_ee58ab8552b80a40",
+      "id_0715f40d6d888394",
+      "id_d11e29a0dc486263"
+    ],
+    "speaker": "client",
+    "inputs": [
+      "email"
+    ],
+    "cardType": "email"
+  },
+  "id_1d9f7486bdba81fa": {
+    "cardID": "id_1d9f7486bdba81fa",
+    "childrenCardIDs": [
+      "id_279622b3e5ce1c0f"
+    ],
+    "parentCardIDs": [
+      "id_ee4f3f6e96d4d88b"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Password?"
+      ]
+    },
+    "filters": [
+      "##emailUnique $$equals ##true",
+      "##emailValid $$equals ##true"
+    ]
+  },
+  "id_279622b3e5ce1c0f": {
+    "cardID": "id_279622b3e5ce1c0f",
+    "childrenCardIDs": [
+      "id_a5eea41152f489fb",
+      "id_81e053c91a1923cb"
+    ],
+    "parentCardIDs": [
+      "id_1d9f7486bdba81fa",
+      "id_81e053c91a1923cb"
+    ],
+    "speaker": "client",
+    "inputs": [
+      "password"
+    ],
+    "cardType": "password",
+    "cardBody": {
+      "messages": [
+        "Password?"
+      ]
+    }
+  },
+  "id_f4eba6fba53b4f4a": {
+    "cardID": "id_f4eba6fba53b4f4a",
+    "childrenCardIDs": [
+      "id_a071db7703458207"
+    ],
+    "parentCardIDs": [
+      "id_7e997579b2d2628d"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Thanks %{name}, you are all set!"
+      ]
+    },
+    "filters": [
+      "##passwordConfirmed $$equals ##true"
+    ]
+  },
+  "id_a071db7703458207": {
+    "cardID": "id_a071db7703458207",
+    "parentCardIDs": [
+      "id_f4eba6fba53b4f4a"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Check your email to confirm your account. Once you are done, come back and refresh the page (by pulling up on me)!"
+      ]
+    }
+  },
+  "id_81e053c91a1923cb": {
+    "cardID": "id_81e053c91a1923cb",
+    "childrenCardIDs": [
+      "id_279622b3e5ce1c0f"
+    ],
+    "parentCardIDs": [
+      "id_279622b3e5ce1c0f"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Sorry, that password isn't long enough."
+      ]
+    },
+    "filters": [
+      "##passwordValid $$equals ##false"
+    ]
+  },
+  "id_5e971b2081c6ee8a": {
+    "cardID": "id_5e971b2081c6ee8a",
+    "childrenCardIDs": [
+      "id_ee58ab8552b80a40"
+    ],
+    "parentCardIDs": [
+      "id_56847df11b5bc5c0"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "What a great name! Next up:"
+      ]
+    }
+  },
+  "id_a5eea41152f489fb": {
+    "cardID": "id_a5eea41152f489fb",
+    "childrenCardIDs": [
+      "id_7e997579b2d2628d"
+    ],
+    "parentCardIDs": [
+      "id_279622b3e5ce1c0f"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "One more time for good measure!"
+      ]
+    },
+    "filters": [
+      "##passwordValid $$equals ##true"
+    ]
+  },
+  "id_7e997579b2d2628d": {
+    "cardID": "id_7e997579b2d2628d",
+    "childrenCardIDs": [
+      "id_f4eba6fba53b4f4a",
+      "id_bf4fe435c167830a"
+    ],
+    "parentCardIDs": [
+      "id_a5eea41152f489fb",
+      "id_bf4fe435c167830a"
+    ],
+    "speaker": "client",
+    "inputs": [
+      "password_confirmation"
+    ],
+    "cardType": "password"
+  },
+  "id_ee2b5cafeeb8fc8f": {
+    "cardID": "id_ee2b5cafeeb8fc8f",
+    "childrenCardIDs": [
+      "id_455fd759f1539ee8"
+    ],
+    "parentCardIDs": [
+      "id_0457e34b2d6b0482"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Awesome! What's your email?"
+      ]
+    }
+  },
+  "id_455fd759f1539ee8": {
+    "cardID": "id_455fd759f1539ee8",
+    "childrenCardIDs": [
+      "id_6ba6e86e10e106a0",
+      "id_80558dd27f8ab050"
+    ],
+    "parentCardIDs": [
+      "id_ee2b5cafeeb8fc8f",
+      "id_233e2036a4e6c7b0"
+    ],
+    "speaker": "client",
+    "inputs": [
+      "email"
+    ],
+    "cardType": "email"
+  },
+  "id_6ba6e86e10e106a0": {
+    "cardID": "id_6ba6e86e10e106a0",
+    "childrenCardIDs": [
+      "id_6abe116a94eafd56"
+    ],
+    "parentCardIDs": [
+      "id_455fd759f1539ee8"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Thanks! Now your password?"
+      ]
+    },
+    "filters": [
+      "##emailValid $$equals ##true"
+    ]
+  },
+  "id_6abe116a94eafd56": {
+    "cardID": "id_6abe116a94eafd56",
+    "childrenCardIDs": [
+      "id_23a735eb76c90f33",
+      "id_233e2036a4e6c7b0"
+    ],
+    "parentCardIDs": [
+      "id_6ba6e86e10e106a0"
+    ],
+    "speaker": "client",
+    "inputs": [
+      "password"
+    ],
+    "cardType": "password"
+  },
+  "id_23a735eb76c90f33": {
+    "cardID": "id_23a735eb76c90f33",
+    "parentCardIDs": [
+      "id_6abe116a94eafd56"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Alright! Logging you in now."
+      ]
+    },
+    "filters": [
+      "##signInValid $$equals ##true"
+    ]
+  },
+  "id_a975f3641b96216a": {
+    "cardID": "id_a975f3641b96216a",
+    "childrenCardIDs": [
+      "id_fbdadaed251fa98d"
+    ],
+    "parentCardIDs": [
+      "root"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Hi! I'm Pearl, your personal health assistant."
+      ]
+    }
+  },
+  "id_0715f40d6d888394": {
+    "cardID": "id_0715f40d6d888394",
+    "childrenCardIDs": [
+      "id_ee4f3f6e96d4d88b"
+    ],
+    "parentCardIDs": [
+      "id_ee4f3f6e96d4d88b"
+    ],
+    "speaker": "ai",
+    "filters": [
+      "##emailUnique $$equals ##false",
+      "##emailValid $$equals ##true"
+    ],
+    "cardBody": {
+      "messages": [
+        "Sorry! That email is taken. Try again?"
+      ]
+    }
+  },
+  "id_d11e29a0dc486263": {
+    "cardID": "id_d11e29a0dc486263",
+    "childrenCardIDs": [
+      "id_ee4f3f6e96d4d88b"
+    ],
+    "parentCardIDs": [
+      "id_ee4f3f6e96d4d88b"
+    ],
+    "speaker": "ai",
+    "filters": [
+      "##emailValid $$equals ##false",
+      "##emailUnique $$equals ##true"
+    ],
+    "cardBody": {
+      "messages": [
+        "Dang, that email is not in the right format. Bro, do you even @-sign?"
+      ]
+    }
+  },
+  "id_bf4fe435c167830a": {
+    "cardID": "id_bf4fe435c167830a",
+    "childrenCardIDs": [
+      "id_7e997579b2d2628d"
+    ],
+    "parentCardIDs": [
+      "id_7e997579b2d2628d"
+    ],
+    "speaker": "ai",
+    "filters": [
+      "##passwordConfirmed $$equals ##false"
+    ],
+    "cardBody": {
+      "messages": [
+        "Those passwords don't match. Try again?"
+      ]
+    }
+  },
+  "id_233e2036a4e6c7b0": {
+    "cardID": "id_233e2036a4e6c7b0",
+    "childrenCardIDs": [
+      "id_455fd759f1539ee8"
+    ],
+    "parentCardIDs": [
+      "id_6abe116a94eafd56"
+    ],
+    "speaker": "ai",
+    "filters": [
+      "##signInValid $$equals ##false"
+    ],
+    "cardBody": {
+      "messages": [
+        "That email and password combination didn't work :(. Let's try it again. What's your email?"
+      ]
+    }
+  },
+  "id_80558dd27f8ab050": {
+    "cardID": "id_80558dd27f8ab050",
+    "parentCardIDs": [
+      "id_455fd759f1539ee8"
+    ],
+    "speaker": "ai",
+    "filters": [
+      "##emailValid $$equals ##false"
+    ],
+    "cardBody": {
+      "messages": [
+        "Sorry, that's not a valid email."
+      ]
+    }
+  }
+}

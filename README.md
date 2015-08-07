@@ -32,8 +32,10 @@ Start by creating a new ruby file in the `app/models/pearl_engine/plugins` direc
 # app/models/pearl_engine/plugins/foo_plugin.rb
 
 module PearlEngine
-  class Plugins::FooPlugin < PearlPlugin
-  ...
+  module Plugins
+    class FooPlugin < PearlEngine::PearlPlugin
+    ...
+    end
   end
 end
 ```
