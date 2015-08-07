@@ -9,6 +9,7 @@ module PearlEngine
         if not contextData["HKQuantityTypeIdentifierStepCount"].nil?
           startDate = contextData["HKQuantityTypeIdentifierStepCount"][0]["startDate"]
           endDate = contextData["HKQuantityTypeIdentifierStepCount"][0]["endDate"]
+          secondsInDay = 24*60*60
           contextData["HKQuantityTypeIdentifierStepCount"].each do |steps|
             stepsIncrement = steps["quantity"]
             stepsTotal += stepsIncrement

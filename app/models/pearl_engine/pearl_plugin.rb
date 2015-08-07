@@ -83,7 +83,9 @@ module PearlEngine
     end
 
 
-    # Returns a unix time representing the start of the day at 12:00AM.
+
+    # Returns in Unix time the start of today's date.
+    # For example, if today was January 1st, 2000 at 12AM, it returns 946702800.
     # FIXME: There could be a slight mismatch of dates since iOS HealthKit data is stored
     # with local time, while this is based off GMT. For example, if local time was 7/1 at 11PM while
     # GMT was 7/2 at 1am, then startOfDay would incorrectly return the start of 7/2 instead of 7/1.
