@@ -1,16 +1,16 @@
 module PearlEngine
   module Plugins
     class MovePlugin < PearlEngine::PearlPlugin
+
       # The average number of daily steps walked for the logged-in user
       def calcStepsAvg(contextData)
         stepsTotal = 0
         daysDifference = 1
-
         if not contextData["HKQuantityTypeIdentifierStepCount"].nil?
           startDate = contextData["HKQuantityTypeIdentifierStepCount"][0]["startDate"]
           endDate = contextData["HKQuantityTypeIdentifierStepCount"][0]["endDate"]
           contextData["HKQuantityTypeIdentifierStepCount"].each do |steps|
-            stepsIncrement = steps["quantity"].to_i
+            stepsIncrement = steps["quantity"]
             stepsTotal += stepsIncrement
             if steps["startDate"] < startDate
               startDate = steps["startDate"]
@@ -19,19 +19,18 @@ module PearlEngine
               endDate = steps["endDate"]
             end
           end
-          daysDifference = 1 + (DateTime.parse(endDate) - DateTime.parse(startDate)).floor
+          daysDifference = 1 + ((Time.at(endDate) - Time.at(startDate))/SECONDS_IN_DAY).floor
         end
         @stepsAvg = stepsTotal/daysDifference
       end
-
 
       # The number of steps walked today
       def calcStepsToday(contextData)
         @stepsToday = 0
         if not contextData["HKQuantityTypeIdentifierStepCount"].nil?
           contextData["HKQuantityTypeIdentifierStepCount"].each do |steps|
-            if steps["startDate"] >= self.startOfDay  && steps["endDate"] <= self.endOfDay
-              stepInteger = steps["quantity"].to_i
+            if steps["startDate"] >= self.startOfDay && steps["endDate"] <= self.endOfDay
+              stepInteger = steps["quantity"]
               @stepsToday += stepInteger
             end
           end
@@ -104,8 +103,8 @@ module PearlEngine
       end
 
 
-      # Calculates and instantiates all the instance variables, and stores them in the rails cache.
-      def initializeContext(contextData, userID)
+      # Calculates and instantiates all the plugin data.
+      def calculatePluginData(contextData)
         self.calcStepsAvg(contextData)
         self.calcStepsToday(contextData)
         self.calcExerciseDurationAvg
@@ -117,8 +116,11 @@ module PearlEngine
         self.calcExerciseDurationUnderGoal
         self.calcUpperGoalRange
         self.calcLowerGoalRange
+      end
 
-        contextDataHash = {
+      # Collects the plugin data in a hash for easy caching and access
+      def getPluginDataHash
+        pluginDataHash = {
           "exerciseDurationGoal": @exerciseDurationGoal,
           "exerciseDurationToday": @exerciseDurationToday,
           "exerciseDurationAvg": @exerciseDurationAvg,
@@ -129,8 +131,12 @@ module PearlEngine
           "upperGoalRange": @upperGoalRange,
           "lowerGoalRange": @lowerGoalRange
         }
+      end
 
-        contextDataHashWithUnits = {
+
+      # Collects the plugin data with units in a hash for easy caching and access
+      def getPluginDataHashWithUnits
+        pluginDataHashWithUnits = {
           "exerciseDurationGoal": self.timeWithUnit(@exerciseDurationGoal),
           "exerciseDurationToday": self.timeWithUnit(@exerciseDurationToday),
           "exerciseDurationAvg": self.timeWithUnit(@exerciseDurationAvg),
@@ -141,15 +147,11 @@ module PearlEngine
           "upperGoalRange": self.timeWithUnit(@upperGoalRange),
           "lowerGoalRange": self.timeWithUnit(@lowerGoalRange)
         }
-
-        Rails.cache.write("#{userID}/contextDataHash", contextDataHash,  expires_in: 1.hour)
-        Rails.cache.write("#{userID}/contextDataHashWithUnits", contextDataHashWithUnits,  expires_in: 1.hour)
-        return "success"
       end
 
 
-
-      # ALL plugins must AT THE MINIMUM include the following 3 constants: INPUT_FILE_NAME, STORYBOARD, CONTEXT_REQUIREMENTS
+      # ALL plugins must AT THE MINIMUM include the following 3 constants: 
+      # INPUT_FILE_NAME, STORYBOARD, and CONTEXT_REQUIREMENTS
       private
 
       # This is the name of the json file that defines the conversation tree which this plugin depends on.
@@ -157,7 +159,6 @@ module PearlEngine
 
       # This is the complete storyboard of the conversation
       STORYBOARD = self.initializeStoryboard(INPUT_FILE_NAME)
-
 
       # This is a hash containing all the data attributes that the plugin requires to function.
       CONTEXT_REQUIREMENTS = {
