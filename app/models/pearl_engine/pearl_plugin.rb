@@ -83,32 +83,19 @@ module PearlEngine
     end
 
 
-<<<<<<< HEAD
+
     # Returns in Unix time the start of today's date.
     # For example, if today was January 1st, 2000 at 12AM, it returns 946702800.
-=======
-    # Returns a unix time representing the start of the day at 12:00AM.
->>>>>>> release-1.3.0
     # FIXME: There could be a slight mismatch of dates since iOS HealthKit data is stored
     # with local time, while this is based off GMT. For example, if local time was 7/1 at 11PM while
     # GMT was 7/2 at 1am, then startOfDay would incorrectly return the start of 7/2 instead of 7/1.
     def startOfDay
-<<<<<<< HEAD
-      Time.now.beginning_of_day.to_i
-    end
-
-    # Returns in Unix time the end of today's date.
-    # For example, if today was January 1st, 2000 at 12AM, it returns 946789199.
-    def endOfDay
-      Time.now.end_of_day.to_i
-=======
       Time.now.getutc.beginning_of_day.to_i
     end
 
     # Returns a unix time representing the end of the day at 11:59PM.
     def endOfDay
       Time.now.getutc.end_of_day.to_i
->>>>>>> release-1.3.0
     end
 
 
