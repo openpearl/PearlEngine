@@ -1,0 +1,9 @@
+Description:
+    This generator makes it easier for developers to create a new pearl plugin. It generates a ruby file with required method stubs for a plugin as well as a blank json file to place the storyboard json into.
+
+Example:
+    rails generate pearl_plugin some_verb
+
+    This will create:
+        lib/pearl_engine/json_files/some_verb.json
+        app/models/pearl_engine/plugins/some_verb_plugin.rb
