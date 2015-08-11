@@ -21,12 +21,19 @@ Plugins are the "brains" of a Pearl conversation, and typically address a specif
 
 
 #### Creating the Conversation Tree
-1. [Use this tool](https://github.com/openpearl/PearlTool-LogicGenerator) to help you easily create the conversation tree in json format.
-2. Place the completed json file in the `lib/pearl_engine/json_files` directory.
+[Use the pearl storyboarding tool](https://github.com/openpearl/PearlStoryboard) to help you easily create the conversation tree in json format.
 
 
 #### Creating the Plugin
-Start by creating a new ruby file in the `app/models/pearl_engine/plugins` directory. Make sure it inherits from the PearlPlugin class. For example, if you wanted to create a "Foo" plugin, the corresponding ruby file would looke like:
+To make the process of creating a new plugin easier, a custom pearl plugin generator is included with the engine. 
+Let's say you wanted to make a new `Foo plugin`. To start, make sure you have already cloned PearlEngine. 
+Then, open up a terminal window and `cd` into the root directory of PearlEngine. Finally, simply run:
+###### Example: creating a Foo plugin
+```console
+rails generate pearl_plugin foo
+```
+This will generate both the ruby file for the plugin as well as its associated json file:
+
 
 ```ruby
 # app/models/pearl_engine/plugins/foo_plugin.rb
@@ -39,4 +46,7 @@ module PearlEngine
   end
 end
 ```
-Be sure to define `INPUT_FILE_NAME`(name of the associated conversation tree json file), `STORYBOARD`(the conversation storyboard which is loaded from `INPUT_FILE_NAME`), `CONTEXT_REQUIREMENTS`(the context data that this plugin will require), and the `initializeContext` method (directions for calculating any variables which you defined in the conversation storyboard).
+```ruby
+# lib/pearl_engine/json_files/foo.json
+```
+Simply paste the json storyboard created using the [pearl storyboarding tool](https://github.com/openpearl/PearlStoryboard) into `lib/pearl_engine/json_files/foo.json`, and then flesh out the method stubs in `app/models/pearl_engine/plugins/foo_plugin.rb` as needed.
