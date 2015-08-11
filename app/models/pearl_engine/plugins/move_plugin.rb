@@ -151,7 +151,7 @@ module PearlEngine
       end
 
 
-      # ALL plugins must AT THE MINIMUM include the following 3 constants: 
+      # ALL plugins must AT THE MINIMUM define the following 3 constants: 
       # INPUT_FILE_NAME, STORYBOARD, and CONTEXT_REQUIREMENTS
       private
 

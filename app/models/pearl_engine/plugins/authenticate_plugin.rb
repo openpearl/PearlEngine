@@ -1,44 +1,7 @@
 module PearlEngine
   module Plugins
     class AuthenticatePlugin < PearlEngine::PearlPlugin
-      def foo(pluginDataHash)
-        authenticate_hash = {
-          "action": "",
-          "parameters": {}
-        }.with_indifferent_access
-
-
-
-        SENSITIVE_DATA.each do |key|
-          if not pluginDataHash[key].nil?
-            authenticate_hash["parameters"][key] = pluginDataHash[key]
-          end
-        end
-
-        name_present = !authenticate_hash["parameters"]["name"].nil?
-        email_present = !authenticate_hash["parameters"]["email"].nil?
-        password_present = !authenticate_hash["parameters"]["password"].nil?
-        password_confirm_present = !authenticate_hash["parameters"]["password_confirmation"].nil?
-
-
-        if name_present and email_present and password_present and password_confirm_present
-          authenticate_hash["action"] = "sign_up"
-        elsif email_present and not password_present
-          authenticate_hash["action"] = "forget_password"
-        elsif not email_present and password_present and password_confirm_present
-          authenticate_hash["action"] = "change_password"
-        elsif email_present and password_present and password_confirm_present
-          authenticate_hash["action"] = "sign_in"
-        else
-          authenticate_hash["action"] = "no_action_found"
-        end
-
-        return authenticate_hash
-      end
-
-
-
-
+      # Instructions for handling user input during the conversation, if any.
       def handleUserInput(cardBody, userID)
         cardBody.keys.each do |key|
           case key
@@ -120,7 +83,8 @@ module PearlEngine
       end
 
 
-
+      # ALL plugins must AT THE MINIMUM define the following 3 constants: 
+      # INPUT_FILE_NAME, STORYBOARD, and CONTEXT_REQUIREMENTS
       private
 
       # This is the name of the json file that defines the conversation tree which this plugin depends on.
@@ -130,8 +94,7 @@ module PearlEngine
       STORYBOARD = self.initializeStoryboard(INPUT_FILE_NAME)
 
       # This is a hash containing all the data attributes that the plugin requires to function.
-      CONTEXT_REQUIREMENTS = {
-      }
+      CONTEXT_REQUIREMENTS = {}
 
       SENSITIVE_DATA = ["name", "email", "password", "password_confirmation"]
 
