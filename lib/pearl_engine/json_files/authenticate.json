@@ -438,13 +438,16 @@
     "parentCardIDs": [
       "id_455fd759f1539ee8"
     ],
+    "childrenCardIDs": [
+      "id_455fd759f1539ee8"
+    ],
     "speaker": "ai",
     "filters": [
       "##emailValid $$equals ##false"
     ],
     "cardBody": {
       "messages": [
-        "Sorry, that's not a valid email."
+        "Sorry, that's not a valid email. Please try again."
       ]
     }
   }
