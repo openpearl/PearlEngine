@@ -374,7 +374,7 @@
     ],
     "cardBody": {
       "messages": [
-        "Sorry! That email is taken. Try again?"
+        "Sorry! That email is taken. Please try another email."
       ]
     }
   },
@@ -411,7 +411,7 @@
     ],
     "cardBody": {
       "messages": [
-        "Those passwords don't match. Try again?"
+        "Those passwords don't match. Try confirming the password again."
       ]
     }
   },
@@ -447,7 +447,7 @@
     ],
     "cardBody": {
       "messages": [
-        "Sorry, that's not a valid email. Please try again."
+        "Sorry, that's not a valid email. Please try another email."
       ]
     }
   }
