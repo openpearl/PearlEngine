@@ -78,6 +78,9 @@
     "parentCardIDs": [
       "id_da1b59d2403d60ec"
     ],
+    "childrenCardIDs": [
+      "id_bba771f4e2783ee9"
+    ],
     "speaker": "client",
     "cardBody": {
       "messages": [
@@ -85,6 +88,32 @@
       ]
     },
     "cardType": ""
+  },
+  "id_bba771f4e2783ee9": {
+    "cardID": "id_bba771f4e2783ee9",
+    "parentCardIDs": [
+      "id_2afe318de46a2f2d"
+    ],
+    "speaker": "client",
+    "inputs": [
+      "response"
+    ],
+    "cardType": "text",
+    "childrenCardIDs": [
+      "id_5752fb793c03e079"
+    ]
+  },
+  "id_5752fb793c03e079": {
+    "cardID": "id_5752fb793c03e079",
+    "parentCardIDs": [
+      "id_bba771f4e2783ee9"
+    ],
+    "speaker": "ai",
+    "cardBody": {
+      "messages": [
+        "Duly noted!"
+      ]
+    }
   },
   "id_a53dd7b55b3b90b2": {
     "cardID": "id_a53dd7b55b3b90b2",
@@ -265,16 +294,13 @@
   },
   "id_531327df32ad1f4e": {
     "cardID": "id_531327df32ad1f4e",
-    "childrenCardIDs": [
-      "id_e7f60ec15cbf1821"
-    ],
     "parentCardIDs": [
       "id_02b31f3b8e18a6e7"
     ],
     "speaker": "ai",
     "cardBody": {
       "messages": [
-        "Oh then that won't work. Park a little further away to get a quick walk in?"
+        "Oh I'm sorry! I'll be quiet now. Please don't text while driving - your safety is more important!"
       ]
     },
     "cardType": ""
@@ -573,22 +599,6 @@
     },
     "cardType": ""
   },
-  "id_e7f60ec15cbf1821": {
-    "cardID": "id_e7f60ec15cbf1821",
-    "parentCardIDs": [
-      "id_531327df32ad1f4e"
-    ],
-    "speaker": "client",
-    "cardBody": {
-      "messages": [
-        "Ok!"
-      ]
-    },
-    "childrenCardIDs": [
-      "id_7f102d54950da60e"
-    ],
-    "cardType": ""
-  },
   "id_33107b1468a4f054": {
     "cardID": "id_33107b1468a4f054",
     "parentCardIDs": [
@@ -730,8 +740,7 @@
   "id_7f102d54950da60e": {
     "cardID": "id_7f102d54950da60e",
     "parentCardIDs": [
-      "id_88b41aaf76ce67db",
-      "id_e7f60ec15cbf1821"
+      "id_88b41aaf76ce67db"
     ],
     "speaker": "ai",
     "cardType": "",
